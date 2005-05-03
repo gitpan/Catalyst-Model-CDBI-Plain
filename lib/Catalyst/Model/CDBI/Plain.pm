@@ -1,24 +1,13 @@
 package Catalyst::Model::CDBI::Plain;
 
 use strict;
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 use base qw[Class::DBI Catalyst::Base];
 
 sub new {
     my ( $class, $c ) = @_;
-
-    my $self = Catalyst::Base::new( $class, $c );
-
-    unless ( $class eq __PACKAGE__ ) {
-        no strict 'refs';
-        no warnings 'redefine';
-        *{"$class\::new"} = sub { Class::DBI::new( $class, @_ ) };
-    }
-
-    return $self;
+    return Catalyst::Base::new( $class, $c );
 }
-
-sub process { 1 }
 
 1;
 
